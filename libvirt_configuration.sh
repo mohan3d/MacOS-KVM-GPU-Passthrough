@@ -17,14 +17,15 @@ echo "Now it's time to edit your configs!"
 mv /etc/libvirt/libvirtd.conf /etc/libvirt/libvirtd.conf.old
 echo "mv /etc/libvirt/libvirtd.conf /etc/libvirt/libvirtd.conf.old"
 sleep 1s
-echo "What is your username?"
-read USERNAME
-sleep 1s
+# Skip name input and use $USER
+# echo "What is your username?"
+# read USERNAME
+# sleep 1s
 clear
-echo "Adding $USERNAME to kvm and libvirt groups..."
-gpasswd -M $USERNAME kvm
-gpasswd -M $USERNAME libvirt
-sed -i "s/amongysus/$USERNAME/g" qemu.conf
+echo "Adding $USER to kvm and libvirt groups..."
+gpasswd -M $USER kvm
+gpasswd -M $USER libvirt
+sed -i "s/amongysus/$USER/g" qemu.conf
 sleep 2s
 clear
 mv libvirtd.conf /etc/libvirt
